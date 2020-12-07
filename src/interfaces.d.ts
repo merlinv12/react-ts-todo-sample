@@ -10,7 +10,7 @@ interface TodosState {
 }
 
 type TodoAction = 
-    | { type: 'ADD'; description: string }
+    | { type: 'ADD'; description: string; date: Date }
     | { type: 'DELETE'; id: number }
     | { type: 'TOGGLE'; id: number};
 

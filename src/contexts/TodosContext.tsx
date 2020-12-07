@@ -26,7 +26,8 @@ const reducer = (
             const newTodo = {
                 id: nextId,
                 description: action.description,
-                done: false
+                done: false,
+                date: action.date
             }
             return {
                 ...state,

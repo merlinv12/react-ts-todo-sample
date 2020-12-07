@@ -9,8 +9,9 @@ export const TodoAdd: React.FC = () => {
     const addTodoItem = (e: React.FormEvent) => {
         e.preventDefault()
         // Input validation function for inputs
+        const submitTime = new Date();
         if ( description !== ''){
-            dispatch({ type: "ADD", description: description})
+            dispatch({ type: "ADD", description: description, date: submitTime})
             setDescription('');
         }
     }
