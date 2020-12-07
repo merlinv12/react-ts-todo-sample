@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 
 const exampleState: TodosState = {
     todos: [
@@ -59,4 +59,13 @@ export const TodosContextProvider: React.FC = ({ children }) => {
             {children}
         </TodosContext.Provider>
     )
+}
+
+// example of a custom hook created from the context 
+export const useTodoState = () => {
+    const {state} = useContext(TodosContext)
+    if (!state) {
+        throw new Error('No context provider');
+    }
+    return state.todos;
 }

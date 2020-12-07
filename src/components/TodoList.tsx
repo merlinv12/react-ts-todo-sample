@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import { TodosContext } from '../contexts/TodosContext';
+import { TodosContext, useTodoState } from '../contexts/TodosContext';
 import { TodoListItem } from './TodoListItem';
 
 export const TodoList: React.FC = () => {
-    const {state: { todos }} = useContext(TodosContext);
+    // const {state: { todos }} = useContext(TodosContext);
+    // Custom Hook can be used here instead of using context
+    const todos = useTodoState();
     
     return todos.length > 0 ? (
         <ul>
