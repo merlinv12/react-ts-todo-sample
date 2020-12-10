@@ -13,13 +13,14 @@ export const TodoListItem: React.FC<Props> = ({todo}) => {
     return (
         <li>
             <span onClick={toggleTodoItem}>
-                <input type='checkbox' checked={todo.done} onChange={toggleTodoItem} />{todo.description}
-            </span>
-            <span>
-                {todo.date?.toTimeString()}
+                <input type='checkbox' checked={todo.completed} onChange={toggleTodoItem} />{todo.title}
             </span>
             <span>
                 <button onClick={deleteTodoItem}>Delete</button>
+            </span>
+            <br />
+            <span>
+                {todo.date?.toTimeString()}
             </span>
         </li>
     )

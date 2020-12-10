@@ -1,7 +1,8 @@
 interface Todo {
+    userId?: number;
     id: number;
-    description: string;
-    done: boolean;
+    title: string;
+    completed: boolean;
     date?: Date;
 }
 
@@ -10,11 +11,12 @@ interface TodosState {
 }
 
 type TodoAction = 
-    | { type: 'ADD'; description: string; date: Date }
+    | { type: 'ADD'; title: string; date: Date }
     | { type: 'DELETE'; id: number }
-    | { type: 'TOGGLE'; id: number};
+    | { type: 'TOGGLE'; id: number}
+    | { type: 'GET_TODOS'; new_todos: Todo[]; };
 
 interface TodosContextModel {
-    state: TodosState;
+    todoState: TodosState;
     dispatch: React.Dispatch<TodoAction>;
 }

@@ -3,24 +3,24 @@ import { TodosContext } from '../contexts/TodosContext';
 
 
 export const TodoAdd: React.FC = () => {
-    const [description, setDescription] = useState('')
+    const [title, setTitle] = useState('')
     const { dispatch } = useContext(TodosContext);
 
     const addTodoItem = (e: React.FormEvent) => {
         e.preventDefault()
         // Input validation function for inputs
         const submitTime = new Date();
-        if ( description !== ''){
-            dispatch({ type: "ADD", description: description, date: submitTime})
-            setDescription('');
+        if ( title !== ''){
+            dispatch({ type: "ADD", title: title, date: submitTime})
+            setTitle('');
         }
     }
 
     return (
         <form onSubmit={addTodoItem}>
             <input 
-                value={description}
-                onChange={ (e) => setDescription(e.target.value)}
+                value={title}
+                onChange={ (e) => setTitle(e.target.value)}
                 placeholder="Add Todo Item"
             />
             <button>Add Todo Item</button>

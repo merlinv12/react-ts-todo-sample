@@ -9,8 +9,8 @@ export const TodoList: React.FC = () => {
     
     return todos.length > 0 ? (
         <ul>
-            {todos.map( (todo: Todo) => 
-                 <TodoListItem key={todo.id} todo={todo}/>
+            {todos.map( (todo: Todo, idx) => 
+                 <TodoListItem key={idx} todo={todo}/>
             )}
         </ul>
     ) : <div>Nothing To Do!</div>
