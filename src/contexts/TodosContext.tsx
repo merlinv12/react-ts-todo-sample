@@ -46,13 +46,21 @@ export const TodosContextProvider: React.FC = ({ children }) => {
     const [todoState, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        const getTodos = () => {
-            fetch(`https://jsonplaceholder.typicode.com/todos`)
-            .then((res) => {
-                return res.status === 200 ? res.json() : new Error();
-            })
-            .then((res) => dispatch({type: 'GET_TODOS', new_todos: res}))
-            .catch((err) => console.error(err))
+        const getTodos = async () => {
+            // Example with Promises written with .then
+            // fetch(`https://jsonplaceholder.typicode.com/todos?_page=2&_limit=5`)
+            // .then((res) => dispatch({type: 'GET_TODOS', new_todos: res}))
+            // .catch((err) => console.error(err))
+            try {
+                let response = await fetch(`https://jsonplaceholder.typicode.com/todos?_page=2&_limit=5`)
+                if (response.status === 200) {
+                    let todoList = await response.json()
+                    dispatch({type: 'GET_TODOS', new_todos: todoList})
+                }
+            }
+            catch(error) {
+                console.log(error)
+            }
         }
         getTodos()
     }, [])
