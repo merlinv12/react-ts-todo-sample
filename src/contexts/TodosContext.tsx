@@ -56,6 +56,7 @@ export const TodosContextProvider: React.FC = ({ children }) => {
                 if (response.status === 200) {
                     let todoList = await response.json()
                     dispatch({type: 'GET_TODOS', new_todos: todoList})
+                    console.log('fetch')
                 }
             }
             catch(error) {
